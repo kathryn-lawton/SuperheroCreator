@@ -227,10 +227,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Images\deadpool.jpg" />
     <Content Include="Images\deadpool2.jpg" />
-    <Content Include="Images\deadpoolpeace.jpg" />
-    <Content Include="Images\marvel.jpg" />
+    <Content Include="Images\Deadpool3.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">

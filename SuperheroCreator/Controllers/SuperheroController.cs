@@ -13,9 +13,9 @@ namespace SuperheroCreator.Controllers
 		public ActionResult Index()
         {
 			ApplicationDbContext db = new ApplicationDbContext();
-			var model = db.Superhero.ToList();
+			var superheroes = db.Superhero.ToList();
 
-            return View(model);
+            return View(superheroes);
         }
 
 		[HttpGet]
@@ -36,7 +36,6 @@ namespace SuperheroCreator.Controllers
 				db.SaveChanges();
 				return RedirectToAction("Index");
 			}
-			ViewBag.superheroId = new SelectList(db.Superhero, "Name", "AlterEgoName", "PrimaryAbility", "SecondaryAbility", "Catchphrase");
 			return View(superhero);
 		}
 
