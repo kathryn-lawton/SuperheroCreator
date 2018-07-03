@@ -95,6 +95,38 @@ namespace SuperheroCreator.Controllers
 			return View(superhero);
 		}
 
+		[HttpGet]
+		public ActionResult Delete(bool? saveChangesError=false, int id=0)
+		{
+			ApplicationDbContext db = new ApplicationDbContext();
+			if (saveChangesError.GetValueOrDefault())
+			{
+				ViewBag.ErrorMessage = "Delete was not successful. Please try again, and if the problem continues contact your system administrator."; 
+			}
+			Superhero superhero = db.Superhero.Find(id);
+			if(superhero == null)
+			{
+				return HttpNotFound();
+			}
+			return View(superhero);
+		}
 
-    }
+		[HttpPost]
+		public ActionResult Delete(int id)
+		{
+			ApplicationDbContext db = new ApplicationDbContext();
+			try
+			{
+				Superhero superhero = db.Superhero.Find(id);
+				db.Superhero.Remove(superhero);
+				db.SaveChanges();
+			}
+			catch (Exception)
+			{
+				return RedirectToAction("Delete", new { id = id, saveChangesError = true });
+			}
+			return RedirectToAction("Index");
+		}
+
+	}
 }
